@@ -16,7 +16,8 @@ import com.moses.eventbus.bean.EventListenerDomain;
 import com.moses.eventbus.commons.Constants;
 import com.moses.eventbus.event.ApplicationEventListener;
 import com.moses.eventbus.event.ApplicationEventType;
-import com.moses.eventbus.utils.ClassUtil;
+//import com.moses.eventbus.utils.ClassUtil;
+import com.moses.eventbus.utils.ClassUtils;
 import com.moses.eventbus.utils.CommonMultimap;
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,8 +47,10 @@ public class ListenerRegister {
      * </p>
      */
     public synchronized CommonMultimap<ApplicationEventType, EventListenerDomain> registerListener() {
+
         // 扫描注解
-        Set<Class<?>> clazzSet = ClassUtil.scanPackageByAnnotation(eventBus.getScanPackage(), eventBus.isScanJar(), Listener.class);
+        Set<Class<?>> clazzSet = ClassUtils.getClasses(eventBus.getScanPackage());
+                //ClassUtil.scanPackageByAnnotation(eventBus.getScanPackage(), eventBus.isScanJar(), Listener.class);
 
         if (clazzSet.isEmpty()) {
             log.error(Constants.Logger.EXCEPTION + "Listener is empty! Please check it!");
@@ -87,6 +90,8 @@ public class ListenerRegister {
                 log.debug(" {}{}init~", Constants.Logger.MESSAGE , clazz);
             }
         }
+
+
         return map;
     }
 

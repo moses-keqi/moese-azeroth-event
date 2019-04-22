@@ -272,7 +272,6 @@ public class ClassUtil {
             //Jar文件
             path = path.substring(0, index + JAR_FILE_EXT.length()); //截取jar路径
             path = removePrefix(path, PATH_FILE_PRE); //去掉文件前缀
-
             processJarFile(new File(path), packageName, classFilter);
         } else {
             fillClasses(path, new File(path), packageName, classFilter);
