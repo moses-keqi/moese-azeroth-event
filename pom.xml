@@ -16,7 +16,6 @@
     </parent>
 
     <properties>
-        <org.elasticsearch.version>5.6.16</org.elasticsearch.version>
         <disruptor.version>3.3.2</disruptor.version>
     </properties>
 
@@ -32,7 +31,6 @@
             <artifactId>disruptor</artifactId>
             <version>${disruptor.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>
